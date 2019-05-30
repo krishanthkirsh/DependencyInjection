@@ -11,19 +11,16 @@ namespace SampleDIApp.Controllers
 {
     public class HomeController : Controller
     {
-        private IEmployeeService employeeService;
+        private IEmployeeService _employeeService;
 
-        public string displayMessage(IEmployeeService _empserviceObj)
+        public HomeController(IEmployeeService employeeService)
         {
-            employeeService = _empserviceObj;
-            string Message = employeeService.DisplayEmployees();
-            return Message;
+            _employeeService = employeeService;
         }
 
         public IActionResult Index()
         {
-            EmployeeService _empserviceObj = new EmployeeService();
-            ViewData["Message"] = displayMessage(_empserviceObj);
+            ViewData["Message"] = _employeeService.DisplayEmployees();
             return View();
         }
 
