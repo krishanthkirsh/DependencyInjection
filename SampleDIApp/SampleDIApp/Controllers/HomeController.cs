@@ -11,7 +11,7 @@ namespace SampleDIApp.Controllers
 {
     public class HomeController : Controller
     {
-        private IEmployeeService _employeeService;
+        private readonly IEmployeeService _employeeService;
 
         public HomeController(IEmployeeService employeeService)
         {
